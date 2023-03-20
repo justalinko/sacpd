@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\DashboardController;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,8 @@ Route::group(['middleware' => 'auth'], function()
     Route::get('/dashboard' , [DashboardController::class  , 'index']);
     Route::get('/dokumen' , [DashboardController::class , 'dokumen']);
     Route::post('/upload-dokumen' , [FileController::class , 'uploadDokumen']);
+    Route::get('/semua-dokumen' , [DashboardController::class , 'semuaDokumen']);
+    Route::get('/d' , [DashboardController::class , 'dokumenDetail']);
     Route::group(['prefix' => '/calon-perangkat'] , function()
     {
         Route::get('/' , [DashboardController::class , 'calon']);

@@ -52,4 +52,15 @@ class DashboardController extends Controller
         $calon->save();
         return redirect('/calon-perangkat')->with('success', 'Berhasil mengubah data');
     }
+
+    public function semuaDokumen()
+    {
+        $data['calons'] = \App\Models\Calon::all();
+        return view('semua_dokumen',$data);
+    }
+    public function dokumenDetail(Request $request)
+    {
+        $data['c'] = \App\Models\Calon::find($request->detail);
+        return view('semua_dokumen',$data);
+    }
 }

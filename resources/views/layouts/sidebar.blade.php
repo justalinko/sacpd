@@ -10,6 +10,9 @@
                     <li @if(Request::is('calon-perangkat')) @class('active') @endif>
                         <a href="{{url('/calon-perangkat')}}"><i class="menu-icon fa fa-users"></i>Calon Perangkat </a>
                     </li>
+                    <li @if(Request::is('semua-dokumen')) @class('active') @endif>
+                        <a href="{{url('/semua-dokumen')}}"><i class="menu-icon fa fa-file"></i>Semua Dokumen </a>
+                    </li>
                     @elseif(auth()->user()->level == 'calon')
                     <li @if(Request::is('dokumen')) @class('active') @endif>
                         <a href="{{url('/dokumen')}}"><i class="menu-icon fa fa-file"></i>Dokumen </a>

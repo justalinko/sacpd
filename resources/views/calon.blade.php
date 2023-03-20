@@ -37,6 +37,7 @@
                                             <div class="btn btn-group">
                                                 <a href="/calon-perangkat/{{$c->id}}/edit" class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i> </a>
                                                 <a href="/calon-perangkat/{{$c->id}}/delete" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                                                <a href="/d?detail={{$c->id}}" class="btn btn-success btn-sm"><i class="fa fa-file"></i></a>
                                             </div>
                                         </td>
                                     </tr>

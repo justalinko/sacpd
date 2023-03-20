@@ -92,13 +92,23 @@ function dokumen( $ktp ,  $kk ,  $ijazah_1 ,  $ijazah_2,  $surat_lamaran ,  $sur
 
 function imagebase64($path)
 {
+   if(substr_count($path, 'http') > 0){
+       return $path;
+   }else{
     $type = pathinfo($path, PATHINFO_EXTENSION);
     if(file_exists($path) == false){
         $path = storage_path('app/public/' . $path);
     }
+    if(is_file($path)){
+    ob_start();
     $data = file_get_contents($path);
     $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
+    ob_end_clean();
+    }else{
+        return 'https://via.placeholder.com/640x480.png/dddddd?text=dokumen+tidak+ditemukan';
+    }
     return $base64;
+   }
 }
 function pdfpreview($path)
 {
