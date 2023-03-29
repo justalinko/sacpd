@@ -6,6 +6,15 @@
                     <li @if(Request::is('dashboard')) @class('active') @endif>
                         <a href="{{url('/dashboard')}}"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
                     </li> 
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-pencil"></i>Hasil Test</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-arrow-right"></i><a href="/hasil-test?filter=administrasi">Test Administrasi</a></li>
+                            <li><i class="fa fa-arrow-right"></i><a href="/hasil-test?filter=pengetahuan">Test Pengetahuan</a></li>
+                            <li><i class="fa fa-arrow-right"></i><a href="/hasil-test?filter=psikologi">Test Psikologi</a></li>
+                            <li><i class="fa fa-arrow-right"></i><a href="/hasil-test?filter=wawancara">Test Wawancara</a></li>
+                        </ul>
+                    </li>
                     @if(auth()->user()->level == 'sekretaris')
                     <li @if(Request::is('calon-perangkat')) @class('active') @endif>
                         <a href="{{url('/calon-perangkat')}}"><i class="menu-icon fa fa-users"></i>Calon Perangkat </a>

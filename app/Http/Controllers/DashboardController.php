@@ -63,4 +63,45 @@ class DashboardController extends Controller
         $data['c'] = \App\Models\Calon::find($request->detail);
         return view('semua_dokumen',$data);
     }
+    public function hasilTest(Request $request)
+    {
+        $filter = $request->filter;
+        switch($filter){
+            case 'administrasi':
+                $data['calons'] = \App\Models\Calon::where('keterangan','test administrasi')->get();
+                $data['filter'] = 'Data semua calon tes administrasi';
+                return view('hasil_test',$data);
+            break;
+            case 'psikologi':
+                $data['calons'] = \App\Models\Calon::where('keterangan','test psikologi')->get();
+                $data['filter'] = 'Data semua calon tes psikologi';
+                return view('hasil_test',$data);
+            break;
+            case 'wawancara':
+                $data['calons'] = \App\Models\Calon::where('keterangan','test wawancara')->get();
+                $data['filter'] = 'Data semua calon tes wawancara';
+                return view('hasil_test',$data);
+            break;
+            case 'pengetahuan':
+                $data['calons'] = \App\Models\Calon::where('keterangan','test pengetahuan')->get();
+                $data['filter'] = 'Data semua calon tes pengetahuan';
+                return view('hasil_test',$data);
+            break;
+            case 'lolos':
+                $data['calons'] = \App\Models\Calon::where('keterangan','lolos')->get();
+                $data['filter'] = 'Data semua calon yang lolos';
+                return view('hasil_test',$data);
+            break;
+            case 'gagal':
+                $data['calons'] = \App\Models\Calon::where('keterangan','gagal')->get();
+                $data['filter'] = 'Data semua calon yang gagal';
+                return view('hasil_test',$data);
+            break;
+            default:
+                $data['calons'] = \App\Models\Calon::all();
+                $data['filter'] = 'Data semua calon';
+                return view('hasil_test',$data);
+            break;
+        }
+    }
 }

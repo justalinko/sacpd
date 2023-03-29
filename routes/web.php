@@ -35,6 +35,7 @@ Route::group(['middleware' => 'auth'], function()
     Route::post('/upload-dokumen' , [FileController::class , 'uploadDokumen']);
     Route::get('/semua-dokumen' , [DashboardController::class , 'semuaDokumen']);
     Route::get('/d' , [DashboardController::class , 'dokumenDetail']);
+    Route::get('/hasil-test' , [DashboardController::class , 'hasilTest']);
     Route::group(['prefix' => '/calon-perangkat'] , function()
     {
         Route::get('/' , [DashboardController::class , 'calon']);
