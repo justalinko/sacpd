@@ -46,7 +46,7 @@
                         </div>
                         <div class="form-group">
                             <label>NIK </label>
-                            <input type="tel" name="nik" class="form-control" placeholder="NIK">
+                            <input type="tel" name="nik" class="form-control" placeholder="NIK" minlength="16">
                         </div>
                         <div class="form-group">
                             <label>Jabatan yang di daftar </label>

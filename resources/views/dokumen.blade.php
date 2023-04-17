@@ -9,6 +9,10 @@
                 <div class="card-title">
                     <h3>Perlengkapan Dokumen Administrasi</h3>
                 </div>
+                <div class="alert alert-info">
+                    <i class="fa fa-info"></i>
+                    Upload dokumen berformat gambar <b>jpeg,jpg,png,heic</b>
+                </div>
             </div>
             <div class="card-body">
                @php

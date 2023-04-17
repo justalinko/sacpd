@@ -13,6 +13,7 @@
                     <div class="card-body">
                         <table class="table table-striped table-hover datatable">
                             <thead>
+                                <th>Nomer</th>
                                 <th>NIK</th><th>Nama Calon</th><th>Jabatan yang di calonkan</th><th>Kelengkapan Dokumen</th><th>Status</th>
                                 <th>Keterangan</th>
                                 <th>Catatan</th>
@@ -21,6 +22,7 @@
                             <tbody>
                                 @foreach ($calons as $c)
                                     <tr>
+                                        <td>{{str_pad($c->id ,5,0,STR_PAD_LEFT) }}</td>
                                         <td>{{ $c->nik }}</td>
                                         <td>{{ $c->user->name }}</td>
                                         <td>{{ $c->jabatan }}</td>
