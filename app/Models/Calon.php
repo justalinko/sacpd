@@ -10,6 +10,11 @@ class Calon extends Model
     use HasFactory;
     public function user()
     {
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo(User::class);
+    }
+
+    public function hasiltest()
+    {
+        return $this->belongsTo(Hasiltest::class , 'id' , 'calon_id');
     }
 }

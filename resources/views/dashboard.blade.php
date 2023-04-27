@@ -80,11 +80,12 @@
                             <div class="card-body">
                                 <table class="table table-striped table-hover datatable">
                                     <thead>
-                                        <th>NIK</th><th>Nama Calon</th><th>Jabatan yang di calonkan</th><th>Kelengkapan Dokumen</th><th>Status</th><th>Keterangan</th><th>Catatan</th>
+                                        <th>Nomer</th><th>NIK</th><th>Nama Calon</th><th>Jabatan yang di calonkan</th><th>Kelengkapan Dokumen</th><th>Status</th><th>Keterangan</th><th>Catatan</th>
                                     </thead>
                                     <tbody>
                                         @foreach ($calons as $calon)
                                             <tr>
+                                                <td>{{str_pad($calon->id ,5,0,STR_PAD_LEFT) }}</td>
                                                 <td>{{ $calon->nik }}</td>
                                                 <td>{{ $calon->user->name }}</td>
                                                 <td>{{ $calon->jabatan }}</td>

@@ -13,17 +13,43 @@
                 <div class="card-body">
                     <table class="table table-striped table-hover datatable">
                         <thead>
-                            <th>NIK</th><th>Nama Calon</th><th>Jabatan yang di calonkan</th><th>Kelengkapan Dokumen</th><th>Status</th><th>Keterangan</th><th>Catatan</th>
+                            <!--<th>Jabatan yang di calonkan</th><th>Kelengkapan Dokumen</th>-->
+                            <th>Nomer</th><th>NIK</th><th>Nama Calon</th><th>Hasil Test</th><th>Status</th><th>Keterangan</th><th>Catatan</th>
                         </thead>
                         <tbody>
                             @foreach ($calons as $calon)
                                 <tr>
+                                    <td>{{str_pad($calon->id ,5,0,STR_PAD_LEFT) }}</td>
                                     <td>{{ $calon->nik }}</td>
                                     <td>{{ $calon->user->name }}</td>
-                                    <td>{{ $calon->jabatan }}</td>
-                                    <td>
-                                        {!!dokumen($calon->dokumen_ktp , $calon->dokumen_kk , $calon->dokumen_ijazah_awal , $calon->dokumen_ijazah_akhir,$calon->dokumen_surat_lamaran , $calon->dokumen_surat_kesehatan , $calon->dokumen_skck , $calon->dokumen_surat_pengadilan)!!}
+                              
+                                    <td class="table-responsive">
+                                        <table class="table table-border">
+                                            <thead>
+                                                <th>Jenis Test</th>
+                                                <th>Nilai</th>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Test Administrasi</td>
+                                                    <td>{{$calon->hasiltest?->hasil_administrasi}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Test Pengetahuan</td>
+                                                    <td>{{$calon->hasiltest?->hasil_pengetahuan}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Test Wawancara</td>
+                                                    <td>{{$calon->hasiltest?->hasil_wawancara}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Test Psikologi</td>
+                                                    <td>{{$calon->hasiltest?->hasil_psikologi}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </td>
+                                        
                                     <td>{!!status($calon->status)!!}</td>
                                     <td>
                                         {{$calon->keterangan}}<br>
