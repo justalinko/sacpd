@@ -11,7 +11,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <table class="table table-striped table-hover datatable">
+                    <table class="table table-border table-hover datatable">
                         <thead>
                             <!--<th>Jabatan yang di calonkan</th><th>Kelengkapan Dokumen</th>-->
                             <th>Nomer</th><th>NIK</th><th>Nama Calon</th><th>Hasil Test</th><th>Status</th><th>Keterangan</th><th>Catatan</th>

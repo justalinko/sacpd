@@ -1,9 +1,11 @@
 Revisi
 User Kepdes
 Tambah Nomor Peserta [DONE]
-Menampilkan hasil tiap tes [PROGRESS] ( + add table hasil test per kategori test )
-Print Laporan tiap tes [PROGRESS] 
+Menampilkan hasil tiap tes [DONE] ( + add table hasil test per kategori test )
+Print Laporan tiap tes [DONE] 
 Sekertaris Preview Dokumen peserta  Bagian lihat dokumen dibuat new page [DONE]
 Validasi panjang nik [DONE]
 Tambah Informasi Jenis Dokumen pada menu upload persyaratan [DONE]
 Fitur catatan tidak jalan [PROGRESS]
+
+- Fitur catatan & add form edit hasil test

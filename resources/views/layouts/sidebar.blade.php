@@ -13,6 +13,7 @@
                             <li><i class="fa fa-arrow-right"></i><a href="/hasil-test?filter=pengetahuan">Test Pengetahuan</a></li>
                             <li><i class="fa fa-arrow-right"></i><a href="/hasil-test?filter=psikologi">Test Psikologi</a></li>
                             <li><i class="fa fa-arrow-right"></i><a href="/hasil-test?filter=wawancara">Test Wawancara</a></li>
+                            <li><i class="fa fa-arrow-right"></i><a href="/hasil-test?filter=all">Semua test</a></li>
                         </ul>
                     </li>
                     @if(auth()->user()->level == 'sekretaris')
