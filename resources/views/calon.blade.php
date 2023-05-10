@@ -16,7 +16,11 @@
                                 <th>Nomer</th>
                                 <th>NIK</th><th>Nama Calon</th><th>Jabatan yang di calonkan</th><th>Kelengkapan Dokumen</th><th>Status</th>
                                 <th>Keterangan</th>
+                                <th>
+                                    Hasil Test
+                                </th>
                                 <th>Catatan</th>
+                                
                                 <th>Aksi</th>
                             </thead>
                             <tbody>
@@ -31,8 +35,38 @@
                                         </td>
                                         <td>{!!status($c->status)!!}</td>
                                         <td>
-                                            {{$c->keterangan}}<br>
-                                            {{$c->hasil_test}}
+                                            {{$c->keterangan}}
+                                        </td>
+                                        <td>
+                                            <table class="table table-border">
+                                                <thead>
+                                                    <th>Jenis Test</th>
+                                                    <th>Nilai</th>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Test Administrasi</td>
+                                                        <td>{{$c->hasiltest?->hasil_administrasi}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Test Pengetahuan</td>
+                                                        <td>{{$c->hasiltest?->hasil_pengetahuan}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Test Wawancara</td>
+                                                        <td>{{$c->hasiltest?->hasil_wawancara}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Test Psikologi</td>
+                                                        <td>{{$c->hasiltest?->hasil_psikologi}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2">
+                                                            <a href="/hasil-test/{{$c->id}}/edit" class="btn btn-warning w-100"><i class="fa fa-pencil"></i> Edit hasil test</a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
                                         </td>
                                         <td>{{$c->catatan}}</td>
                                         <td>

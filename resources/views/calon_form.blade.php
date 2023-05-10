@@ -71,15 +71,12 @@
                                 <textarea name="catatan" id="" cols="30" rows="10" class="form-control">{{$edit->catatan}}</textarea>
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label for="" class="col-3">Hasil Test</label>
-                            <div class="col-9">
-                                <input type="text" name="hasil_test" class="form-control" value="{{$edit->hasil_test}}">
-                            </div>
-                        </div>
+                        
 
                         <div class="form-group row">
-                            <div class="col-3"></div>
+                            <div class="col-3">
+                                <a href="/hasil-test/{{$edit->id}}/edit" class="btn btn-warning w-100"><i class="fa fa-pencil"></i> Edit hasil test</a>
+                            </div>
                             <div class="col-9">
                                 <button type="submit" class="btn btn-primary w-100"><i class="fa fa-save"></i> Simpan</button>
                             </div>

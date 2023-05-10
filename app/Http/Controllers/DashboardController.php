@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Hasiltest;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -49,6 +50,7 @@ class DashboardController extends Controller
         $calon->nik = $request->nik;
         $calon->status = $request->status;
         $calon->keterangan = $request->keterangan;
+        $calon->catatan = $request->catatan;
         $calon->save();
         return redirect('/calon-perangkat')->with('success', 'Berhasil mengubah data');
     }
@@ -103,5 +105,23 @@ class DashboardController extends Controller
                 return view('hasil_test',$data);
             break;
         }
+    }
+
+    public function hasilTestEdit($id)
+    {
+        $data['hasil'] = Hasiltest::where('calon_id' , $id)->first();
+        return view('hasil_test_form',$data);
+    }
+    public function hasilTestEditPost(Request $request)
+    {
+        $hasil = Hasiltest::where('calon_id' , $request->id)->first();
+        $hasil->hasil_administrasi = $request->administrasi;
+        $hasil->hasil_pengetahuan = $request->pengetahuan;
+        $hasil->hasil_wawancara = $request->wawancara;
+        $hasil->hasil_psikologi = $request->psikologi;
+
+        $hasil->save();
+
+        return redirect('/calon-perangkat')->with('success' , 'Berhasil mengubah hasil test ');
     }
 }
