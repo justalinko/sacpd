@@ -8,7 +8,7 @@
                     <div class="card-header">
                         <div class="card-title">
                             <h3>
-                                Edit Hasil test {{$hasil?->user?->name}}                         
+                                Edit Hasil test {{$hasil?->calon?->user?->name}}                         
                             </h3>
 
                             <div class="alert alert-info">
