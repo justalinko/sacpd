@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Calon;
+use App\Models\Hasiltest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -52,6 +53,14 @@ class AuthController extends Controller
             $calon->jabatan = $request->jabatan;
             $calon->nik = $request->nik;
             $calon->save();
+
+            /**
+             * Create Hasiltest
+             */
+            $hasiltest = new Hasiltest();
+            $hasiltest->user_id = $user->id;
+            $hasiltest->calon_id = $calon->id;
+            $hasiltest->save();
             auth()->login($user);
             return redirect()->intended('dokumen');
         }else{

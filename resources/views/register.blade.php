@@ -43,6 +43,7 @@
                         <div class="form-group">
                             <label>Nama </label>
                             <input type="text" name="name" class="form-control" placeholder="Nama anda">
+                            <div class="alert alert-danger d-none" id="error_nik"></div>
                         </div>
                         <div class="form-group">
                             <label>NIK </label>
@@ -59,10 +60,12 @@
                         <div class="form-group">
                             <label>Kata Sandi</label>
                             <input type="password" name="password" class="form-control" placeholder="Password">
+                            <div class="alert d-none" id="alert_password"></div>
                         </div>
                         <div class="form-group">
                             <label>Konfirmasi Kata Sandi</label>
                             <input type="password" name="password_confirmation" class="form-control" placeholder="Password Confirm">
+                            <div class="alert d-none" id="alert_password2"></div>
                         </div>
                         
                         <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Daftar</button>
@@ -76,11 +79,60 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+        <script>
+        $(document).ready(function(){
+
+            $('input[name="nik"]').keyup(function(){
+                var nik = $(this).val();
+                // check nik must 16 digit
+                if(nik.length !== 16)
+                {
+                    $('input[name="nik"]').removeClass('is-valid').addClass('is-invalid');
+                    $('#error_nik').removeClass('d-none').addClass('d-block');
+                    $('#error_nik').html('NIK harus 16 digit');
+
+                }else{
+                    $('input[name="nik"]').removeClass('is-invalid').addClass('is-valid');
+                    $('#error_nik').removeClass('d-block').addClass('d-none');
+                }
+            });
+
+            $('input[name="password_confirmation"]').keyup(function(){
+                var password = $('input[name="password"]').val();
+                var password_confirmation = $(this).val();
+                // check password confirmation
+                if(password_confirmation !== password)
+                {
+                    $('input[name="password_confirmation"]').addClass('is-invalid').removeClass('is-valid');
+                    $('#alert_password2').addClass('alert-danger d-block').removeClass('d-none').html('Konfirmasi password tidak sama');
+                }else{
+                    $('input[name="password_confirmation"]').removeClass('is-invalid').addClass('is-valid');
+                    $('#alert_password2').addClass('alert-success d-block').removeClass('d-none alert-danger').html('Password valid');
+                }
+            });
+
+            $('input[name="password"]').keyup(function(){
+                // combine alpha num and char , min 8 digit password
+                var password = $(this).val();
+                var regex = /^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]{8,}$/;
+                if(password.match(regex))
+                {
+                    $('input[name="password"]').removeClass('is-invalid').addClass('is-valid');
+                    $('#alert_password').addClass('alert-success d-block').html('Password cukup kuat').removeClass('d-none alert-danger');
+                }else{
+                    $('input[name="password"]').addClass('is-invalid').removeClass('is-valid');
+                    $('#alert_password').addClass('alert-danger d-block').html('Password harus berisi huruf Besar dan kecil , angka, minimal 8 digit').removeClass('d-none');
+                }
+            })
+        });
+
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
-    <script src="{{asset('assets/js/main.js')}}"></script>
+   
+
 
 </body>
 </html>

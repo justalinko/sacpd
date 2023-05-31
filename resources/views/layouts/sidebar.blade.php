@@ -6,6 +6,8 @@
                     <li @if(Request::is('dashboard')) @class('active') @endif>
                         <a href="{{url('/dashboard')}}"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
                     </li> 
+
+                    @if(auth()->user()->level != 'calon')
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-pencil"></i>Hasil Test</a>
                         <ul class="sub-menu children dropdown-menu">
@@ -16,6 +18,7 @@
                             <li><i class="fa fa-arrow-right"></i><a href="/hasil-test?filter=all">Semua test</a></li>
                         </ul>
                     </li>
+                    @endif
                     @if(auth()->user()->level == 'sekretaris')
                     <li @if(Request::is('calon-perangkat')) @class('active') @endif>
                         <a href="{{url('/calon-perangkat')}}"><i class="menu-icon fa fa-users"></i>Calon Perangkat </a>
