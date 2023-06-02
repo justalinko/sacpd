@@ -10,8 +10,8 @@ class DashboardController extends Controller
     public function index()
     {
         $data['totalCalon'] = \App\Models\Calon::count();
-        $data['calonLolos'] = \App\Models\Calon::where('status','lolos')->count();
-        $data['calonTidakLolos'] = \App\Models\Calon::where('status','tidak lolos')->count();
+        $data['calonLolos'] = \App\Models\Calon::where('keterangan','lolos')->count();
+        $data['calonTidakLolos'] = \App\Models\Calon::where('keterangan','tidak lolos')->count();
         $data['calons'] = \App\Models\Calon::all();
         return view('dashboard',$data);
     }
