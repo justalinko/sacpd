@@ -42,7 +42,14 @@
         var table = $('.datatable').DataTable({
             dom: 'Bfrtip',
             buttons: [
-                'copy', 'excel', 'pdf','print'
+                {
+                extend: 'pdfHtml5',
+                messageTop: 'Tanggal : ' + new Date().toLocaleDateString('en-GB') + '\n\n',
+                messageBottom: '\n\n\nYang mengetahui, Petinggi Desa\n\n\n..........................'
+                },
+                'excel',
+                'print',
+                'copy'
             ]
         });
     });
