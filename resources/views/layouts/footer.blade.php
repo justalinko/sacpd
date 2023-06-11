@@ -44,8 +44,8 @@
             buttons: [
                 {
                 extend: 'pdfHtml5',
-                messageTop: 'Tanggal : ' + new Date().toLocaleDateString('en-GB') + '\n\n',
-                messageBottom: '\n\n\nYang mengetahui, Petinggi Desa\n\n\n..........................'
+                messageTop: 'Tanggal : ' + new Date().toLocaleDateString('id-ID') + '\n\n',
+                messageBottom: '\n\n\nPati,' +new Date().toLocaleDateString('id-ID')+'\nKepala Desa\n\n\nKARYADI S.Sos. I'
                 },
                 'excel',
                 'print',
