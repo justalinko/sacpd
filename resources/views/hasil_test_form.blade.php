@@ -18,7 +18,7 @@
                     </div>
 
                     <div class="card-body">
-                        <form action="/hasil-test/{{$hasil->id}}/edit" method="post">
+                        <form action="/hasil-test/{{$hasil->calon_id}}/edit" method="post">
                             @csrf
                         <div class="form-group row">
                             <label for="" class="col-3">Nilai Test Administrasi</label>

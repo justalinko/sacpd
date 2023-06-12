@@ -115,6 +115,7 @@ class DashboardController extends Controller
     public function hasilTestEditPost(Request $request)
     {
         $hasil = Hasiltest::where('calon_id' , $request->id)->first();
+        
         $hasil->hasil_administrasi = $request->administrasi;
         $hasil->hasil_pengetahuan = $request->pengetahuan;
         $hasil->hasil_wawancara = $request->wawancara;
