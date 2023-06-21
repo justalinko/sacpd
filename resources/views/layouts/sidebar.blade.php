@@ -26,6 +26,9 @@
                     <li @if(Request::is('semua-dokumen')) @class('active') @endif>
                         <a href="{{url('/semua-dokumen')}}"><i class="menu-icon fa fa-file"></i>Semua Dokumen </a>
                     </li>
+                    <li @if(Request::is('post')) @class('active') @endif>
+                        <a href="{{url('/post')}}"><i class="menu-icon fa fa-list"></i>Artikel</a>
+                    </li>
                     @elseif(auth()->user()->level == 'calon')
                     <li @if(Request::is('dokumen')) @class('active') @endif>
                         <a href="{{url('/dokumen')}}"><i class="menu-icon fa fa-file"></i>Dokumen </a>

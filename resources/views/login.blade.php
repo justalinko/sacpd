@@ -27,40 +27,94 @@
 
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
 </head>
-<body class="bg-dark">
+<body >
 
-    <div class="sufee-login d-flex align-content-center flex-wrap">
-        <div class="container">
-            <div class="login-content">
-                <div class="login-logo">
-                    <a href="{{url('/')}}">
-                        <h1 class="text-white">{{env('APP_NAME')}}</h1>
-                    </a>
+    <div class="m-4 p-4">
+    
+            <div class="row">
+                
+                <div class="col-md-8">
+                    @foreach(\App\Models\Post::all() as $new)
+                    <div class="card mb-3" >
+                        <div class="row g-0">
+                          <div class="col-md-4" style="max-width: 200px;">
+                            <img src="{{imagebase64($new->image,'images/' , 'Tidak ada gambar')}}" class="img-fluid rounded-start" alt="...">
+                          </div>
+                          <div class="col-md-8">
+                            <div class="card-body">
+                              <h5 class="card-title">{{$new->title}}</h5>
+                              <p class="card-text">
+                                    {!!substr($new->content,0,100)!!} ... <a href="#" data-toggle="modal" data-target="#post_{{$new->id}}" class="btn btn-link">Selengkapnya</a>
+                              </p>
+                              <p class="card-text"><small class="text-body-secondary">
+                            {{$new->created_at->diffForHumans()}}    
+                            </small></p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Modal -->
+<div class="modal fade" id="post_{{$new->id}}" tabindex="-1" role="dialog" aria-labelledby="post_{{$new->id}}label" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="post_{{$new->id}}label">{{$new->title}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <img src="{{imagebase64($new->image , 'images/' , 'tidak ada gambar')}}" class="img img-thumbnail img-responsive" alt="{{$new->title}}">
+            <p class="mt-3">
+            {!! $new->content !!}
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+                    @endforeach
+                      
                 </div>
-                <div class="login-form">
-                    @if(session('error'))
-                        <div class="alert alert-danger">{{session('error')}}</div>
-                        @endif
-                    <form method="POST" method="/login">
-                        @csrf
-                        <div class="form-group">
-                            <label>Surel</label>
-                            <input type="email" name="email" class="form-control" placeholder="Email">
+                <div class="col-md-4">
+                    <div >
+                        <div class="login-logo">
+                            <a href="{{url('/')}}">
+                                <img src="{{asset('images/kab-pati.png')}}" style="width:100px;height:auto">
+                                <h1 class="text-dark">{{env('APP_NAME')}}</h1>
+                            </a>
                         </div>
-                        <div class="form-group">
-                            <label>Kata Sandi</label>
-                            <input type="password" name="password" class="form-control" placeholder="Password">
+                        <div class="login-form">
+                            @if(session('error'))
+                                <div class="alert alert-danger">{{session('error')}}</div>
+                                @endif
+                            <form method="POST" method="/login">
+                                @csrf
+                                <div class="form-group">
+                                    <label>Surel</label>
+                                    <input type="email" name="email" class="form-control" placeholder="Email">
+                                </div>
+                                <div class="form-group">
+                                    <label>Kata Sandi</label>
+                                    <input type="password" name="password" class="form-control" placeholder="Password">
+                                </div>
+                                
+                                <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Masuk</button>
+                               
+                                <div class="register-link m-t-15 text-center">
+                                    <p>Tidak Punya akun ? <a href="/register"> Daftar disini</a></p>
+                                </div>
+                            </form>
                         </div>
-                        
-                        <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Masuk</button>
-                       
-                        <div class="register-link m-t-15 text-center">
-                            <p>Tidak Punya akun ? <a href="/register"> Daftar disini</a></p>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
-        </div>
+            
+       
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>

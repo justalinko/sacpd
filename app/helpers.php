@@ -90,14 +90,16 @@ function dokumen( $ktp ,  $kk ,  $ijazah_1 ,  $ijazah_2,  $surat_lamaran ,  $sur
     return $html;
 }
 
-function imagebase64($path)
+function imagebase64($path,$addpath ='' , $err = 'Dokumen+tidak+ditemukan')
 {
    if(substr_count($path, 'http') > 0){
        return $path;
    }else{
-    $type = pathinfo($path, PATHINFO_EXTENSION);
-    if(file_exists($path) == false){
-        $path = storage_path('app/public/' . $path);
+    $type = pathinfo($addpath.$path, PATHINFO_EXTENSION);
+    if(file_exists(storage_path('app/public/'.$addpath.$path))){
+        $path = storage_path('app/public/' . $addpath.$path);
+    }else{
+        $path = $addpath.$path;
     }
     if(is_file($path)){
     ob_start();
@@ -105,7 +107,7 @@ function imagebase64($path)
     $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
     ob_end_clean();
     }else{
-        return 'https://via.placeholder.com/640x480.png/dddddd?text=dokumen+tidak+ditemukan';
+        return 'https://via.placeholder.com/640x480.png/dddddd?text='.$err;
     }
     return $base64;
    }

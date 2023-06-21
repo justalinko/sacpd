@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PostController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -47,6 +48,15 @@ Route::group(['middleware' => 'auth'], function()
         Route::get('/{id}/delete' , [DashboardController::class , 'calonDelete']);
         Route::get('/{id}/edit' , [DashboardController::class , 'calonEdit']);
         Route::post('/{id}/edit' , [DashboardController::class , 'calonEditPost']);
+    });
+
+    Route::group(['prefix' => '/post'] , function(){
+        Route::get('/' , [PostController::class , 'index']);
+        Route::get('/create' , [PostController::class , 'create']);
+        Route::post('/create' , [PostController::class , 'store']);
+        Route::get('/{id}/edit' , [PostController::class , 'edit']);
+        Route::post('/{id}/edit' , [PostController::class , 'update']);
+        Route::get('/{id}/delete' , [PostController::class , 'destroy']);
     });
 
     Route::get('/profile' , [AuthController::class , 'profile']);

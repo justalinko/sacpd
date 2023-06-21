@@ -26,7 +26,7 @@
                             <tbody>
                                 @foreach ($calons as $c)
                                     <tr>
-                                        <td>{{str_pad($c->id ,5,0,STR_PAD_LEFT) }}</td>
+                                        <td>{{$c->id}}</td>
                                         <td>{{ $c->nik }}</td>
                                         <td>{{ $c->user->name }}</td>
                                         <td>{{ $c->jabatan }}</td>
